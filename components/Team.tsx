@@ -334,8 +334,8 @@ export default function Team() {
                             aria-hidden
                             className="absolute inset-0 bg-slate-900 opacity-60 transition-opacity duration-500 group-hover:opacity-0 group-data-[stage=1]:opacity-0 group-data-[stage=2]:opacity-0"
                             style={{
-                              WebkitMaskImage: `url(/_next/image?url=${encodeURIComponent(member.photo)}&w=1080&q=75)`,
-                              maskImage: `url(/_next/image?url=${encodeURIComponent(member.photo)}&w=1080&q=75)`,
+                              WebkitMaskImage: `url(${member.photo})`,
+                              maskImage: `url(${member.photo})`,
                               WebkitMaskSize: "cover",
                               maskSize: "cover",
                               WebkitMaskPosition: "50% 0%",
