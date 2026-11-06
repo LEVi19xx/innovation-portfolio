@@ -39,9 +39,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 top-7 opacity-40 [background-image:linear-gradient(rgba(37,99,235,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.18)_1px,transparent_1px)] [background-size:18px_18px] [mask-image:linear-gradient(to_bottom,#000,transparent_80%)] dark:[background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)]"
       />
-      <div className="pointer-events-none absolute right-3 top-9 h-[55%] w-[58%] text-blue-900/60 dark:text-white/80">
-        <ProjectArt type={project.pattern} />
-      </div>
+      {project.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={project.image}
+          alt=""
+          className={`pointer-events-none absolute inset-x-0 bottom-0 top-7 h-[calc(100%-1.75rem)] w-full ${
+            project.portrait ? "object-contain" : "object-cover object-top"
+          }`}
+        />
+      ) : (
+        <div className="pointer-events-none absolute right-3 top-9 h-[55%] w-[58%] text-blue-900/60 dark:text-white/80">
+          <ProjectArt type={project.pattern} />
+        </div>
+      )}
 
       {/* sheen on hover */}
       <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 transition-all duration-700 group-hover:left-[130%] group-hover:opacity-100 dark:via-white/20" />

@@ -72,9 +72,22 @@ function Reveal({
 }
 
 /** Stand-in for a project screenshot until real images are available. */
-function Screen({ art, label, name }: { art: string; label: string; name: string }) {
+function Screen({
+  art,
+  label,
+  name,
+  images,
+  portrait,
+}: {
+  art: string;
+  label: string;
+  name: string;
+  images?: string[];
+  portrait?: boolean;
+}) {
+  const image = images && images.length > 0;
   return (
-    <div className="group relative aspect-[16/10] w-full overflow-hidden border border-blue-300/70 bg-gradient-to-br from-blue-200 via-blue-50 to-white shadow-[0_30px_70px_-35px_rgba(37,99,235,0.5)] transition-shadow duration-500 hover:shadow-[0_40px_90px_-30px_rgba(37,99,235,0.65)] dark:border-blue-400/25 dark:from-[#1d4ed8] dark:via-[#0a1330] dark:to-[#05060a]">
+    <div className={`group relative w-full overflow-hidden border border-blue-300/70 bg-gradient-to-br from-blue-200 via-blue-50 to-white shadow-[0_30px_70px_-35px_rgba(37,99,235,0.5)] transition-shadow duration-500 hover:shadow-[0_40px_90px_-30px_rgba(37,99,235,0.65)] dark:border-blue-400/25 dark:from-[#1d4ed8] dark:via-[#0a1330] dark:to-[#05060a] ${image ? "" : "aspect-[16/10]"}`}>
       <div className="absolute inset-x-0 top-0 z-10 flex h-8 items-center gap-1.5 border-b border-blue-900/10 bg-white/60 px-3.5 backdrop-blur-sm dark:border-white/10 dark:bg-white/5">
         <span className="h-2 w-2 rounded-full bg-blue-900/25 dark:bg-white/30" />
         <span className="h-2 w-2 rounded-full bg-blue-900/25 dark:bg-white/30" />
@@ -86,14 +99,36 @@ function Screen({ art, label, name }: { art: string; label: string; name: string
           {label}
         </span>
       </div>
-      <span aria-hidden className="pointer-events-none absolute right-0 top-8 h-48 w-48 rounded-full bg-blue-400/40 blur-3xl dark:bg-blue-500/40" />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-8 opacity-40 [background-image:linear-gradient(rgba(37,99,235,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.18)_1px,transparent_1px)] [background-size:26px_26px] dark:[background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)]"
-      />
-      <div className="absolute inset-x-[10%] bottom-[8%] top-[18%] text-blue-900/60 transition-transform duration-700 ease-out group-hover:scale-105 dark:text-white/80">
-        <ProjectArt type={art} />
-      </div>
+      {image ? (
+        portrait ? (
+          // phone screenshots: shown side by side at a sensible height instead of stretched full width
+          <div className="mt-8 flex items-center justify-center gap-4 p-5 sm:gap-6 sm:p-8">
+            {images.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={src}
+                alt={`${name} screenshot ${i + 1}`}
+                className="block h-auto max-h-[70vh] min-w-0 flex-1 basis-0 rounded-2xl object-contain shadow-[0_20px_50px_-20px_rgba(0,0,0,0.5)]"
+              />
+            ))}
+          </div>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={images[0]} alt={`${name} screenshot`} className="mt-8 block h-auto w-full" />
+        )
+      ) : (
+        <>
+          <span aria-hidden className="pointer-events-none absolute right-0 top-8 h-48 w-48 rounded-full bg-blue-400/40 blur-3xl dark:bg-blue-500/40" />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 top-8 opacity-40 [background-image:linear-gradient(rgba(37,99,235,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.18)_1px,transparent_1px)] [background-size:26px_26px] dark:[background-image:linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)]"
+          />
+          <div className="absolute inset-x-[10%] bottom-[8%] top-[18%] text-blue-900/60 transition-transform duration-700 ease-out group-hover:scale-105 dark:text-white/80">
+            <ProjectArt type={art} />
+          </div>
+        </>
+      )}
       <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-1/2 z-20 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 transition-all duration-1000 group-hover:left-[130%] group-hover:opacity-100 dark:via-white/20" />
     </div>
   );
@@ -198,6 +233,29 @@ export default function ProjectDetail({ project, index, total, projects, onClose
               {project.overview}
             </motion.p>
 
+            {project.link.startsWith("http") ? (
+              <motion.div {...rise(5)} className="mt-6">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 bg-blue-600 px-5 py-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-[0_12px_30px_-12px_rgba(37,99,235,0.8)] transition-colors hover:bg-blue-500"
+                >
+                  Visit live site
+                  <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                    ↗
+                  </span>
+                </a>
+                <p className="mt-2 font-mono text-[11px] tracking-wide text-slate-500 dark:text-slate-400">
+                  {new URL(project.link).hostname.replace(/^www\./, "")}
+                </p>
+              </motion.div>
+            ) : (
+              <motion.p {...rise(5)} className="mt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                Internal tool · no public link
+              </motion.p>
+            )}
+
             <motion.dl
               {...rise(5)}
               className="mt-8 grid max-w-md grid-cols-2 gap-x-6 gap-y-5 border-t border-slate-200 pt-6 dark:border-white/10"
@@ -241,46 +299,28 @@ export default function ProjectDetail({ project, index, total, projects, onClose
               </motion.div>
             )}
 
-            <motion.div
-              {...rise(7)}
-              className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-slate-200 pt-6 dark:border-white/10"
-            >
-              {project.results.map((r, i) => (
-                <div key={i}>
-                  <p className="font-display text-2xl font-black leading-none text-slate-900 md:text-3xl dark:text-white">
-                    <CountUp value={r.value} />
-                  </p>
-                  <p className="mt-2 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{r.label}</p>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div {...rise(8)} className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
-              <a
-                href={project.link}
-                onClick={project.link.startsWith("#") ? onClose : undefined}
-                className="group inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-slate-900 dark:text-white"
+            {project.results.length > 0 && (
+              <motion.div
+                {...rise(7)}
+                className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-slate-200 pt-6 dark:border-white/10"
               >
-                Visit live site
-                <span className="h-px w-8 bg-blue-600 transition-all duration-300 group-hover:w-14 dark:bg-blue-300" />
-                <span aria-hidden>→</span>
-              </a>
-              <div className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                <button type="button" onClick={onPrev} className="transition-colors hover:text-blue-700 dark:hover:text-blue-300">
-                  ← Prev
-                </button>
-                <button type="button" onClick={onNext} className="transition-colors hover:text-blue-700 dark:hover:text-blue-300">
-                  Next →
-                </button>
-              </div>
-            </motion.div>
+                {project.results.map((r, i) => (
+                  <div key={i}>
+                    <p className="font-display text-2xl font-black leading-none text-slate-900 md:text-3xl dark:text-white">
+                      <CountUp value={r.value} />
+                    </p>
+                    <p className="mt-2 text-[11px] leading-snug text-slate-500 dark:text-slate-400">{r.label}</p>
+                  </div>
+                ))}
+              </motion.div>
+            )}
           </div>
         </aside>
 
         {/* visuals + story */}
         <main className="space-y-10 px-6 pb-16 pt-20 md:px-10 lg:pt-6">
           <Reveal root={scrollRef}>
-            <Screen art={art(0)} label="Screen 01" name={project.name} />
+            <Screen art={art(0)} label="Screen 01" name={project.name} images={project.images ?? (project.image ? [project.image] : undefined)} portrait={project.portrait} />
           </Reveal>
 
           {project.challenge && (
@@ -307,9 +347,11 @@ export default function ProjectDetail({ project, index, total, projects, onClose
             </Reveal>
           )}
 
-          <Reveal root={scrollRef}>
-            <Screen art={art(1)} label="Screen 02" name={project.name} />
-          </Reveal>
+          {!project.image && (
+            <Reveal root={scrollRef}>
+              <Screen art={art(1)} label="Screen 02" name={project.name} />
+            </Reveal>
+          )}
 
           {project.solution && (
             <Reveal root={scrollRef} className="max-w-xl">
@@ -340,9 +382,11 @@ export default function ProjectDetail({ project, index, total, projects, onClose
             </Reveal>
           )}
 
-          <Reveal root={scrollRef}>
-            <Screen art={art(2)} label="Screen 03" name={project.name} />
-          </Reveal>
+          {!project.image && (
+            <Reveal root={scrollRef}>
+              <Screen art={art(2)} label="Screen 03" name={project.name} />
+            </Reveal>
+          )}
 
           {project.purpose && (
             <Reveal root={scrollRef} className="max-w-xl">

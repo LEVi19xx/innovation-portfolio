@@ -64,77 +64,6 @@ const stack = [
     ),
   },
   {
-    name: "GraphQL",
-    icon: (
-      <g fill="none" stroke="#e10098" strokeWidth="1.4">
-        <path d="M12 2 21 7.5v9L12 22 3 16.5v-9L12 2Z" />
-        <circle cx="12" cy="12" r="2" fill="#e10098" stroke="none" />
-      </g>
-    ),
-  },
-  {
-    name: "PostgreSQL",
-    icon: (
-      <g fill="none" stroke="#336791" strokeWidth="1.5" strokeLinecap="round">
-        <ellipse cx="12" cy="6" rx="8" ry="3" />
-        <path d="M4 6v12c0 1.66 3.58 3 8 3s8-1.34 8-3V6" />
-        <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
-      </g>
-    ),
-  },
-  {
-    name: "Docker",
-    icon: (
-      <g fill="#2496ed">
-        <rect x="2" y="10" width="4" height="4" rx="0.6" />
-        <rect x="7" y="10" width="4" height="4" rx="0.6" />
-        <rect x="12" y="10" width="4" height="4" rx="0.6" />
-        <rect x="7" y="5" width="4" height="4" rx="0.6" />
-        <rect x="12" y="5" width="4" height="4" rx="0.6" />
-        <path d="M1 14c0 4 3.5 6.5 9.5 6.5 7 0 11-3.3 12.5-9-1-.7-2.4-.9-3.6-.5-.3-.9-1-1.7-1.9-2.2l-.6.6c-1 1-1 2.6 0 3.5.3.3.7.5 1 .6-.5.7-2 1.5-4 1.5H2Z" />
-      </g>
-    ),
-  },
-  {
-    name: "Figma",
-    icon: (
-      <g>
-        <path d="M9 1a4 4 0 0 0 0 8h3V1H9Z" fill="#f24e1e" />
-        <path d="M14 1v8h4a4 4 0 0 0 0-8h-4Z" fill="#ff7262" />
-        <path d="M9 9a4 4 0 0 0 0 8h3V9H9Z" fill="#a259ff" />
-        <path d="M14 9v7.5a3.5 3.5 0 1 0 3.5-3.5H14Z" fill="#1abcfe" />
-        <circle cx="12.5" cy="20.5" r="3.5" fill="#0acf83" />
-      </g>
-    ),
-  },
-  {
-    name: "Git",
-    icon: (
-      <g fill="none" stroke="#f05033" strokeWidth="1.5" strokeLinecap="round">
-        <circle cx="7" cy="5" r="2" />
-        <circle cx="7" cy="19" r="2" />
-        <circle cx="17" cy="12" r="2" />
-        <path d="M7 7v10" />
-        <path d="M7 12c0-2.5 2-5 5-5h3" />
-      </g>
-    ),
-  },
-  {
-    name: "AWS",
-    icon: (
-      <path
-        fill="#ff9900"
-        d="M6 14a4.5 4.5 0 0 1-.4-9c.6-2.7 3-4.7 5.9-4.7 2.6 0 4.8 1.6 5.6 3.9A4 4 0 0 1 22 8a4 4 0 0 1-1.4 3H6Z"
-      />
-    ),
-  },
-  {
-    name: "Vercel",
-    icon: (
-      <path d="M12 3 22 20H2L12 3Z" className="fill-slate-900 dark:fill-white" />
-    ),
-  },
-  {
     name: "JavaScript",
     icon: (
       <g>
@@ -154,21 +83,6 @@ const stack = [
     ),
   },
   {
-    name: "Python",
-    icon: (
-      <g>
-        <path
-          d="M12 2c-4 0-3.7 1.7-3.7 1.7v2h3.8v.5H6.6S4 5.9 4 10s2.2 3.9 2.2 3.9h1.4v-1.9s-.1-2.2 2.2-2.2h3.6s2.1 0 2.1-2v-3.6S15.8 2 12 2Zm-2 1.3a.7.7 0 1 1 0 1.4.7.7 0 0 1 0-1.4Z"
-          fill="#3776ab"
-        />
-        <path
-          d="M12 22c4 0 3.7-1.7 3.7-1.7v-2h-3.8v-.5h5.5s2.6.3 2.6-3.8-2.2-3.9-2.2-3.9h-1.4v1.9s.1 2.2-2.2 2.2H10.6s-2.1 0-2.1 2v3.6S8.2 22 12 22Zm2-1.3a.7.7 0 1 1 0-1.4.7.7 0 0 1 0 1.4Z"
-          fill="#ffd43b"
-        />
-      </g>
-    ),
-  },
-  {
     name: "MongoDB",
     icon: (
       <path
@@ -180,33 +94,192 @@ const stack = [
     ),
   },
   {
-    name: "Redis",
-    icon: (
-      <g fill="#dc382d">
-        <path d="M12 3 4 6.5 12 10l8-3.5L12 3Z" />
-        <path d="M4 11 12 14.5 20 11v2.2L12 16.7 4 13.2V11Z" />
-        <path d="M4 15.8 12 19.3l8-3.5v2.2L12 21.5l-8-3.5v-2.2Z" />
-      </g>
-    ),
-  },
-  {
-    name: "Kubernetes",
-    icon: (
-      <g fill="none" stroke="#326ce5" strokeWidth="1.4" strokeLinejoin="round">
-        <path d="M12 2.5 20.5 8v8L12 21.5 3.5 16V8L12 2.5Z" />
-        <circle cx="12" cy="12" r="3.2" fill="#326ce5" stroke="none" />
-      </g>
-    ),
-  },
-  {
-    name: "Sass",
+    name: "Vite",
     icon: (
       <g>
-        <circle cx="12" cy="12" r="11" fill="#cf649a" />
-        <path
-          d="M8 15.5c1 .6 2.6.9 3.9.5 1-.3 1.4-1 1-1.6-.4-.6-1.3-.7-2.3-.8-1.3-.2-2.8-.5-3-2-.2-1.6 1.3-2.9 3.4-3.1 1.3-.1 2.5.1 3.4.6l-.6 1.2c-.7-.4-1.7-.6-2.7-.5-1 .1-1.7.6-1.6 1.2.1.6 1 .7 2 .9 1.4.2 3 .5 3.1 2.2.2 1.8-1.5 3.1-3.7 3.3-1.5.1-3-.2-4.1-.9l.2-1Z"
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#646cff" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="10"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
           fill="#fff"
-        />
+        >
+          V
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Express",
+    icon: (
+      <g>
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#303030" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="11"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          ex
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Electron",
+    icon: (
+      <g>
+        <circle cx="12" cy="12" r="11" fill="#2b2e3a" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#9feaf9"
+        >
+          E
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Flutter",
+    icon: (
+      <g>
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#02569b" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          F
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Firebase",
+    icon: (
+      <g>
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#ffa000" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="9"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          Fb
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Framer Motion",
+    icon: (
+      <g>
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#0055ff" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="9"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          Fm
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Socket.IO",
+    icon: (
+      <g>
+        <circle cx="12" cy="12" r="11" fill="#010101" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="9"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          IO
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "DaisyUI",
+    icon: (
+      <g>
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#1ad1a5" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          D
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Cloudflare",
+    icon: (
+      <g>
+        <rect x="1" y="1" width="22" height="22" rx="4" fill="#f38020" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="9"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          CF
+        </text>
+      </g>
+    ),
+  },
+  {
+    name: "Gemini",
+    icon: (
+      <g>
+        <circle cx="12" cy="12" r="11" fill="#4285f4" />
+        <text
+          x="12"
+          y="16"
+          textAnchor="middle"
+          fontSize="12"
+          fontWeight="700"
+          fontFamily="Arial, sans-serif"
+          fill="#fff"
+        >
+          G
+        </text>
       </g>
     ),
   },

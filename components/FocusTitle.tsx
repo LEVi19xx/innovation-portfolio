@@ -12,8 +12,8 @@ type Props = {
 };
 
 /**
- * Stacked title where one line is in focus ([ bracketed ], sharp) and the
- * rest are blurred behind a scanline mask. Focus cycles on its own and
+ * Stacked title where one line is in focus ([ bracketed ], full opacity) and the
+ * rest are slightly dimmed but stay sharp. Focus cycles on its own and
  * follows the pointer on hover.
  */
 export default function FocusTitle({ lines, className = "", interval = 2400, forceDark = false }: Props) {
@@ -54,9 +54,7 @@ export default function FocusTitle({ lines, className = "", interval = 2400, for
             </span>
             <span
               className={`rgb-split block whitespace-nowrap transition-all duration-500 ${
-                on
-                  ? "opacity-100 blur-0"
-                  : "opacity-50 blur-[2.5px] [mask-image:repeating-linear-gradient(to_bottom,#000_0,#000_2px,transparent_2px,transparent_3px)]"
+                on ? "opacity-100" : "opacity-60"
               }`}
             >
               {line}
